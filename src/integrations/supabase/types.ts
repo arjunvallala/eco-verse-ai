@@ -14,7 +14,81 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          baseline_co2_kg: number | null
+          commute_mode: string | null
+          country: string | null
+          created_at: string
+          diet_type: string | null
+          display_name: string | null
+          electronics_upgrade_years: number | null
+          fast_fashion_freq: string | null
+          flights_per_year: number | null
+          heating_type: string | null
+          household_size: number | null
+          id: string
+          level: number
+          meals_out_per_week: number | null
+          onboarding_complete: boolean
+          renewable_pct: number | null
+          streak_days: number
+          streaming_hours_per_week: number | null
+          updated_at: string
+          weekly_km: number | null
+          xp: number
+        }
+        Insert: {
+          avatar_url?: string | null
+          baseline_co2_kg?: number | null
+          commute_mode?: string | null
+          country?: string | null
+          created_at?: string
+          diet_type?: string | null
+          display_name?: string | null
+          electronics_upgrade_years?: number | null
+          fast_fashion_freq?: string | null
+          flights_per_year?: number | null
+          heating_type?: string | null
+          household_size?: number | null
+          id: string
+          level?: number
+          meals_out_per_week?: number | null
+          onboarding_complete?: boolean
+          renewable_pct?: number | null
+          streak_days?: number
+          streaming_hours_per_week?: number | null
+          updated_at?: string
+          weekly_km?: number | null
+          xp?: number
+        }
+        Update: {
+          avatar_url?: string | null
+          baseline_co2_kg?: number | null
+          commute_mode?: string | null
+          country?: string | null
+          created_at?: string
+          diet_type?: string | null
+          display_name?: string | null
+          electronics_upgrade_years?: number | null
+          fast_fashion_freq?: string | null
+          flights_per_year?: number | null
+          heating_type?: string | null
+          household_size?: number | null
+          id?: string
+          level?: number
+          meals_out_per_week?: number | null
+          onboarding_complete?: boolean
+          renewable_pct?: number | null
+          streak_days?: number
+          streaming_hours_per_week?: number | null
+          updated_at?: string
+          weekly_km?: number | null
+          xp?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
