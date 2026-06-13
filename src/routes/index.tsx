@@ -77,13 +77,13 @@ function Nav() {
       </nav>
 
       <div className="flex items-center gap-3">
-        <button className="hidden text-sm text-muted-foreground transition-colors hover:text-foreground md:block">
+        <Link to="/auth" className="hidden text-sm text-muted-foreground transition-colors hover:text-foreground md:block">
           Sign in
-        </button>
-        <button className="group relative inline-flex items-center gap-1.5 rounded-full gradient-canopy px-4 py-2 text-sm font-semibold text-primary-foreground shadow-glow-sm transition-transform hover:scale-[1.03]">
+        </Link>
+        <Link to="/auth" className="group relative inline-flex items-center gap-1.5 rounded-full gradient-canopy px-4 py-2 text-sm font-semibold text-primary-foreground shadow-glow-sm transition-transform hover:scale-[1.03]">
           Start Free
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-        </button>
+        </Link>
       </div>
     </header>
   );
@@ -120,14 +120,14 @@ function Hero() {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <button className="group relative inline-flex items-center gap-2 rounded-full gradient-canopy px-6 py-3 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]">
+            <Link to="/auth" className="group relative inline-flex items-center gap-2 rounded-full gradient-canopy px-6 py-3 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]">
               Start For Free
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </button>
-            <button className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-base font-semibold transition-colors hover:border-primary/40">
+            </Link>
+            <a href="#features" className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-base font-semibold transition-colors hover:border-primary/40">
               <PlayCircle className="h-5 w-5 text-primary" />
               Watch 90-sec demo
-            </button>
+            </a>
           </div>
 
           <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-border/50 pt-8">
@@ -487,13 +487,13 @@ function CTASection() {
           Join 4,800+ players already battling for the planet.
         </p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-          <button className="group inline-flex items-center gap-2 rounded-full gradient-canopy px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]">
+          <Link to="/auth" className="group inline-flex items-center gap-2 rounded-full gradient-canopy px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]">
             Claim your island
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </button>
-          <button className="rounded-full glass px-7 py-3.5 text-base font-semibold transition-colors hover:border-primary/40">
+          </Link>
+          <a href="#features" className="rounded-full glass px-7 py-3.5 text-base font-semibold transition-colors hover:border-primary/40">
             See Pro features
-          </button>
+          </a>
         </div>
       </div>
     </section>
