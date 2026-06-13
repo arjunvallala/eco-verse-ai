@@ -120,14 +120,14 @@ function Hero() {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <button className="group relative inline-flex items-center gap-2 rounded-full gradient-canopy px-6 py-3 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]">
+            <Link to="/auth" className="group relative inline-flex items-center gap-2 rounded-full gradient-canopy px-6 py-3 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]">
               Start For Free
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </button>
-            <button className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-base font-semibold transition-colors hover:border-primary/40">
+            </Link>
+            <a href="#features" className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-base font-semibold transition-colors hover:border-primary/40">
               <PlayCircle className="h-5 w-5 text-primary" />
               Watch 90-sec demo
-            </button>
+            </a>
           </div>
 
           <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-border/50 pt-8">
