@@ -487,13 +487,13 @@ function CTASection() {
           Join 4,800+ players already battling for the planet.
         </p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-          <button className="group inline-flex items-center gap-2 rounded-full gradient-canopy px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]">
+          <Link to="/auth" className="group inline-flex items-center gap-2 rounded-full gradient-canopy px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]">
             Claim your island
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </button>
-          <button className="rounded-full glass px-7 py-3.5 text-base font-semibold transition-colors hover:border-primary/40">
+          </Link>
+          <a href="#features" className="rounded-full glass px-7 py-3.5 text-base font-semibold transition-colors hover:border-primary/40">
             See Pro features
-          </button>
+          </a>
         </div>
       </div>
     </section>
