@@ -14,6 +14,99 @@ export type Database = {
   }
   public: {
     Tables: {
+      challenges: {
+        Row: {
+          category: string
+          co2_savings_kg: number
+          created_at: string
+          description: string
+          difficulty: string
+          id: string
+          slug: string
+          title: string
+          xp_reward: number
+        }
+        Insert: {
+          category: string
+          co2_savings_kg?: number
+          created_at?: string
+          description: string
+          difficulty?: string
+          id?: string
+          slug: string
+          title: string
+          xp_reward?: number
+        }
+        Update: {
+          category?: string
+          co2_savings_kg?: number
+          created_at?: string
+          description?: string
+          difficulty?: string
+          id?: string
+          slug?: string
+          title?: string
+          xp_reward?: number
+        }
+        Relationships: []
+      }
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      emission_logs: {
+        Row: {
+          activity: string
+          category: string
+          co2_kg: number
+          created_at: string
+          id: string
+          notes: string | null
+          occurred_at: string
+          user_id: string
+        }
+        Insert: {
+          activity: string
+          category: string
+          co2_kg: number
+          created_at?: string
+          id?: string
+          notes?: string | null
+          occurred_at?: string
+          user_id: string
+        }
+        Update: {
+          activity?: string
+          category?: string
+          co2_kg?: number
+          created_at?: string
+          id?: string
+          notes?: string | null
+          occurred_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -29,12 +122,15 @@ export type Database = {
           heating_type: string | null
           household_size: number | null
           id: string
+          island_stage: number
+          last_log_date: string | null
           level: number
           meals_out_per_week: number | null
           onboarding_complete: boolean
           renewable_pct: number | null
           streak_days: number
           streaming_hours_per_week: number | null
+          total_co2_saved_kg: number
           updated_at: string
           weekly_km: number | null
           xp: number
@@ -53,12 +149,15 @@ export type Database = {
           heating_type?: string | null
           household_size?: number | null
           id: string
+          island_stage?: number
+          last_log_date?: string | null
           level?: number
           meals_out_per_week?: number | null
           onboarding_complete?: boolean
           renewable_pct?: number | null
           streak_days?: number
           streaming_hours_per_week?: number | null
+          total_co2_saved_kg?: number
           updated_at?: string
           weekly_km?: number | null
           xp?: number
@@ -77,17 +176,55 @@ export type Database = {
           heating_type?: string | null
           household_size?: number | null
           id?: string
+          island_stage?: number
+          last_log_date?: string | null
           level?: number
           meals_out_per_week?: number | null
           onboarding_complete?: boolean
           renewable_pct?: number | null
           streak_days?: number
           streaming_hours_per_week?: number | null
+          total_co2_saved_kg?: number
           updated_at?: string
           weekly_km?: number | null
           xp?: number
         }
         Relationships: []
+      }
+      user_challenges: {
+        Row: {
+          accepted_at: string
+          challenge_id: string
+          completed_at: string | null
+          id: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          accepted_at?: string
+          challenge_id: string
+          completed_at?: string | null
+          id?: string
+          status?: string
+          user_id: string
+        }
+        Update: {
+          accepted_at?: string
+          challenge_id?: string
+          completed_at?: string | null
+          id?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_challenges_challenge_id_fkey"
+            columns: ["challenge_id"]
+            isOneToOne: false
+            referencedRelation: "challenges"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
