@@ -79,10 +79,7 @@ function ChallengesPage() {
                     const c = challenges.find((x) => x.id === uc.challenge_id);
                     if (!c) return null;
                     return (
-                      <div
-                        key={uc.id}
-                        className="rounded-2xl glass-strong p-5 shadow-elevated"
-                      >
+                      <div key={uc.id} className="rounded-2xl glass-strong p-5 shadow-elevated">
                         <div className="flex items-start gap-3">
                           <Trophy className="h-5 w-5 text-[var(--canopy-gold)]" />
                           <div className="flex-1">

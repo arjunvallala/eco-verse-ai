@@ -40,7 +40,8 @@ function OnboardingPage() {
 
   useEffect(() => {
     if (profile.data?.onboarding_complete) navigate({ to: "/dashboard", replace: true });
-    if (profile.data?.display_name) setA((p) => ({ ...p, display_name: p.display_name ?? profile.data!.display_name! }));
+    if (profile.data?.display_name)
+      setA((p) => ({ ...p, display_name: p.display_name ?? profile.data!.display_name! }));
   }, [profile.data, navigate]);
 
   const mutation = useMutation({
@@ -89,8 +90,18 @@ function OnboardingPage() {
               title="Let's meet you"
               subtitle="A name and home base so your island feels yours."
             >
-              <TextField label="Display name" value={a.display_name ?? ""} onChange={(v) => update("display_name", v)} placeholder="Earth Architect" />
-              <TextField label="Country (optional)" value={a.country ?? ""} onChange={(v) => update("country", v)} placeholder="India" />
+              <TextField
+                label="Display name"
+                value={a.display_name ?? ""}
+                onChange={(v) => update("display_name", v)}
+                placeholder="Earth Architect"
+              />
+              <TextField
+                label="Country (optional)"
+                value={a.country ?? ""}
+                onChange={(v) => update("country", v)}
+                placeholder="India"
+              />
             </StepShell>
           )}
 
@@ -109,8 +120,21 @@ function OnboardingPage() {
                   { v: "mixed", l: "Mixed" },
                 ]}
               />
-              <NumberField label="Weekly km travelled" value={a.weekly_km} onChange={(v) => update("weekly_km", v)} step={5} min={0} max={2000} />
-              <NumberField label="Flights per year" value={a.flights_per_year} onChange={(v) => update("flights_per_year", v)} min={0} max={50} />
+              <NumberField
+                label="Weekly km travelled"
+                value={a.weekly_km}
+                onChange={(v) => update("weekly_km", v)}
+                step={5}
+                min={0}
+                max={2000}
+              />
+              <NumberField
+                label="Flights per year"
+                value={a.flights_per_year}
+                onChange={(v) => update("flights_per_year", v)}
+                min={0}
+                max={50}
+              />
             </StepShell>
           )}
 
@@ -127,13 +151,25 @@ function OnboardingPage() {
                   { v: "vegan", l: "Vegan" },
                 ]}
               />
-              <NumberField label="Meals out / takeaway per week" value={a.meals_out_per_week} onChange={(v) => update("meals_out_per_week", v)} min={0} max={30} />
+              <NumberField
+                label="Meals out / takeaway per week"
+                value={a.meals_out_per_week}
+                onChange={(v) => update("meals_out_per_week", v)}
+                min={0}
+                max={30}
+              />
             </StepShell>
           )}
 
           {step === 3 && (
             <StepShell title="Your home energy" subtitle="Heating + electricity blend.">
-              <NumberField label="Household size" value={a.household_size} onChange={(v) => update("household_size", v)} min={1} max={12} />
+              <NumberField
+                label="Household size"
+                value={a.household_size}
+                onChange={(v) => update("household_size", v)}
+                min={1}
+                max={12}
+              />
               <ChoiceGrid
                 label="Primary heating"
                 value={a.heating_type}
@@ -147,12 +183,22 @@ function OnboardingPage() {
                   { v: "none", l: "None" },
                 ]}
               />
-              <NumberField label="% renewable electricity" value={a.renewable_pct} onChange={(v) => update("renewable_pct", v)} min={0} max={100} step={5} />
+              <NumberField
+                label="% renewable electricity"
+                value={a.renewable_pct}
+                onChange={(v) => update("renewable_pct", v)}
+                min={0}
+                max={100}
+                step={5}
+              />
             </StepShell>
           )}
 
           {step === 4 && (
-            <StepShell title="Lifestyle & shopping" subtitle="The hidden footprint of stuff & screens.">
+            <StepShell
+              title="Lifestyle & shopping"
+              subtitle="The hidden footprint of stuff & screens."
+            >
               <ChoiceGrid
                 label="Fast fashion purchases"
                 value={a.fast_fashion_freq}
@@ -164,8 +210,20 @@ function OnboardingPage() {
                   { v: "weekly", l: "Weekly+" },
                 ]}
               />
-              <NumberField label="Years between phone upgrades" value={a.electronics_upgrade_years} onChange={(v) => update("electronics_upgrade_years", v)} min={1} max={10} />
-              <NumberField label="Streaming hours / week" value={a.streaming_hours_per_week} onChange={(v) => update("streaming_hours_per_week", v)} min={0} max={80} />
+              <NumberField
+                label="Years between phone upgrades"
+                value={a.electronics_upgrade_years}
+                onChange={(v) => update("electronics_upgrade_years", v)}
+                min={1}
+                max={10}
+              />
+              <NumberField
+                label="Streaming hours / week"
+                value={a.streaming_hours_per_week}
+                onChange={(v) => update("streaming_hours_per_week", v)}
+                min={0}
+                max={80}
+              />
             </StepShell>
           )}
 
@@ -192,7 +250,8 @@ function OnboardingPage() {
                 </>
               ) : (
                 <>
-                  Continue <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  Continue{" "}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </>
               )}
             </button>
@@ -207,7 +266,15 @@ function OnboardingPage() {
   );
 }
 
-function StepShell({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
+function StepShell({
+  title,
+  subtitle,
+  children,
+}: {
+  title: string;
+  subtitle: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="animate-float-up">
       <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">{title}</h2>
@@ -217,10 +284,22 @@ function StepShell({ title, subtitle, children }: { title: string; subtitle: str
   );
 }
 
-function TextField({ label, value, onChange, placeholder }: { label: string; value: string; onChange: (v: string) => void; placeholder?: string }) {
+function TextField({
+  label,
+  value,
+  onChange,
+  placeholder,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+}) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground">{label}</span>
+      <span className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+        {label}
+      </span>
       <input
         type="text"
         value={value}
@@ -233,10 +312,26 @@ function TextField({ label, value, onChange, placeholder }: { label: string; val
   );
 }
 
-function NumberField({ label, value, onChange, min = 0, max = 1000, step = 1 }: { label: string; value: number | undefined; onChange: (v: number) => void; min?: number; max?: number; step?: number }) {
+function NumberField({
+  label,
+  value,
+  onChange,
+  min = 0,
+  max = 1000,
+  step = 1,
+}: {
+  label: string;
+  value: number | undefined;
+  onChange: (v: number) => void;
+  min?: number;
+  max?: number;
+  step?: number;
+}) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground">{label}</span>
+      <span className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+        {label}
+      </span>
       <input
         type="number"
         value={value ?? ""}
@@ -250,10 +345,22 @@ function NumberField({ label, value, onChange, min = 0, max = 1000, step = 1 }: 
   );
 }
 
-function ChoiceGrid({ label, value, onChange, options }: { label: string; value: string | undefined; onChange: (v: string) => void; options: { v: string; l: string }[] }) {
+function ChoiceGrid({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string | undefined;
+  onChange: (v: string) => void;
+  options: { v: string; l: string }[];
+}) {
   return (
     <div>
-      <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">{label}</span>
+      <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+        {label}
+      </span>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
         {options.map((o) => {
           const active = value === o.v;

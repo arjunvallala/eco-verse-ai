@@ -26,7 +26,10 @@ function IslandPage() {
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
           A world that grows as you do. Stage{" "}
-          <span className="text-foreground">{stage} · {STAGE_NAMES[stage - 1]}</span>.
+          <span className="text-foreground">
+            {stage} · {STAGE_NAMES[stage - 1]}
+          </span>
+          .
         </p>
       </header>
       <AppNav />
@@ -39,7 +42,11 @@ function IslandPage() {
         <div className="space-y-4">
           <Stat icon={<Sparkles className="h-4 w-4" />} label="XP" value={`${xp} / ${toNext}`} />
           <Stat icon={<Trophy className="h-4 w-4" />} label="Level" value={`${p?.level ?? 1}`} />
-          <Stat icon={<Flame className="h-4 w-4" />} label="Streak" value={`${p?.streak_days ?? 0}d`} />
+          <Stat
+            icon={<Flame className="h-4 w-4" />}
+            label="Streak"
+            value={`${p?.streak_days ?? 0}d`}
+          />
           <Stat
             icon={<TreePine className="h-4 w-4" />}
             label="CO₂ saved"
@@ -56,8 +63,8 @@ function IslandPage() {
                     i + 1 === stage
                       ? "text-primary"
                       : i + 1 < stage
-                      ? "text-foreground/70"
-                      : "text-muted-foreground"
+                        ? "text-foreground/70"
+                        : "text-muted-foreground"
                   }`}
                 >
                   <span className="font-mono text-xs">{i + 1}</span>
@@ -130,8 +137,20 @@ function IslandScene({ stage }: { stage: number }) {
         <g key={i} transform={`translate(${t.x},${t.y})`}>
           <rect x="-3" y="0" width="6" height={t.h * 0.4} fill="#3a2618" />
           <circle cx="0" cy="-2" r={t.h * 0.5} fill={`oklch(0.55 0.18 ${t.hue})`} opacity="0.95" />
-          <circle cx="-10" cy="6" r={t.h * 0.4} fill={`oklch(0.5 0.18 ${t.hue + 10})`} opacity="0.85" />
-          <circle cx="10" cy="4" r={t.h * 0.42} fill={`oklch(0.6 0.2 ${t.hue - 10})`} opacity="0.9" />
+          <circle
+            cx="-10"
+            cy="6"
+            r={t.h * 0.4}
+            fill={`oklch(0.5 0.18 ${t.hue + 10})`}
+            opacity="0.85"
+          />
+          <circle
+            cx="10"
+            cy="4"
+            r={t.h * 0.42}
+            fill={`oklch(0.6 0.2 ${t.hue - 10})`}
+            opacity="0.9"
+          />
         </g>
       ))}
 
@@ -163,9 +182,7 @@ function IslandScene({ stage }: { stage: number }) {
       })}
 
       {/* moon at peak stages */}
-      {stage >= 5 && (
-        <circle cx="600" cy="60" r="22" fill="oklch(0.95 0.05 90)" opacity="0.85" />
-      )}
+      {stage >= 5 && <circle cx="600" cy="60" r="22" fill="oklch(0.95 0.05 90)" opacity="0.85" />}
     </svg>
   );
 }

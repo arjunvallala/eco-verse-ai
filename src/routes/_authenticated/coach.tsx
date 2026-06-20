@@ -2,10 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Loader2, Send, Trash2, Leaf } from "lucide-react";
+import { Loader2, Send, Trash2, Leaf, AlertCircle, Info } from "lucide-react";
 import { toast } from "sonner";
 import { AppNav } from "@/components/app-nav";
 import { listChatHistory, sendCoachMessage, clearChatHistory } from "@/lib/coach.functions";
+import { checkAiConfig } from "@/lib/ai-gateway.server";
 
 export const Route = createFileRoute("/_authenticated/coach")({ component: CoachPage });
 
@@ -14,12 +15,15 @@ function CoachPage() {
   const fetchHistory = useServerFn(listChatHistory);
   const send = useServerFn(sendCoachMessage);
   const clear = useServerFn(clearChatHistory);
+  const checkConfig = useServerFn(checkAiConfig);
 
   const history = useQuery({ queryKey: ["coach"], queryFn: () => fetchHistory() });
+  const configQuery = useQuery({ queryKey: ["aiConfig"], queryFn: () => checkConfig() });
 
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const [apiKeyError, setApiKeyError] = useState(false);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -33,17 +37,22 @@ function CoachPage() {
     mutationFn: (text: string) => send({ data: { content: text } }),
     onMutate: (text) => {
       // optimistic
-      qc.setQueryData(["coach"], (old: any) => [
+      qc.setQueryData(["coach"], (old: unknown[] | undefined) => [
         ...(old ?? []),
         { id: "temp", role: "user", content: text, created_at: new Date().toISOString() },
       ]);
       setInput("");
+      setApiKeyError(false);
     },
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["coach"] });
       setTimeout(() => inputRef.current?.focus(), 50);
     },
     onError: (e) => {
+      const msg = e instanceof Error ? e.message : String(e);
+      if (msg.includes("Missing LOVABLE_API_KEY") || msg.includes("LOVABLE_API_KEY")) {
+        setApiKeyError(true);
+      }
       toast.error(e instanceof Error ? e.message : "Couldn't reach EcoAI");
       qc.invalidateQueries({ queryKey: ["coach"] });
     },
@@ -71,6 +80,28 @@ function CoachPage() {
 
       <section className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-6 py-6">
         <div className="flex-1 space-y-4 overflow-y-auto rounded-3xl glass-strong p-6 shadow-elevated">
+          {/* Lovable API Key info banner */}
+          {configQuery.data?.hasKey ? (
+            <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4 flex gap-3 text-sm leading-relaxed text-emerald-200/90">
+              <Leaf className="h-5 w-5 shrink-0 text-emerald-400 mt-0.5 animate-pulse" />
+              <div>
+                <p className="font-semibold text-base mb-1">Live Mode Enabled</p>
+                EcoAI is running in live mode powered by{" "}
+                {configQuery.data.keyType === "lovable" ? "Lovable AI Gateway" : "Google Gemini"}.
+              </div>
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4 flex gap-3 text-sm leading-relaxed text-amber-200/90">
+              <Info className="h-5 w-5 shrink-0 text-amber-400 mt-0.5" />
+              <div>
+                <p className="font-semibold text-base mb-1">Demo Mode Enabled</p>
+                No API key detected in <code>.env</code>. EcoAI is running in simulated response
+                mode. Add a <code>LOVABLE_API_KEY</code> or <code>GEMINI_API_KEY</code> to enable
+                live Gemini Coach conversations.
+              </div>
+            </div>
+          )}
+
           {msgs.length === 0 && (
             <div className="flex flex-col items-center gap-3 py-12 text-center">
               <Leaf className="h-8 w-8 text-primary" />

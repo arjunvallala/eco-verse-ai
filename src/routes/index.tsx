@@ -70,17 +70,31 @@ function Nav() {
       </Link>
 
       <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-        <a href="#features" className="transition-colors hover:text-foreground">Features</a>
-        <a href="#gamify" className="transition-colors hover:text-foreground">Gamification</a>
-        <a href="#impact" className="transition-colors hover:text-foreground">Impact</a>
-        <a href="#pricing" className="transition-colors hover:text-foreground">Pricing</a>
+        <a href="#features" className="transition-colors hover:text-foreground">
+          Features
+        </a>
+        <a href="#gamify" className="transition-colors hover:text-foreground">
+          Gamification
+        </a>
+        <a href="#impact" className="transition-colors hover:text-foreground">
+          Impact
+        </a>
+        <a href="#pricing" className="transition-colors hover:text-foreground">
+          Pricing
+        </a>
       </nav>
 
       <div className="flex items-center gap-3">
-        <Link to="/auth" className="hidden text-sm text-muted-foreground transition-colors hover:text-foreground md:block">
+        <Link
+          to="/auth"
+          className="hidden text-sm text-muted-foreground transition-colors hover:text-foreground md:block"
+        >
           Sign in
         </Link>
-        <Link to="/auth" className="group relative inline-flex items-center gap-1.5 rounded-full gradient-canopy px-4 py-2 text-sm font-semibold text-primary-foreground shadow-glow-sm transition-transform hover:scale-[1.03]">
+        <Link
+          to="/auth"
+          className="group relative inline-flex items-center gap-1.5 rounded-full gradient-canopy px-4 py-2 text-sm font-semibold text-primary-foreground shadow-glow-sm transition-transform hover:scale-[1.03]"
+        >
           Start Free
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </Link>
@@ -114,17 +128,22 @@ function Hero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg text-muted-foreground md:text-xl">
-            The world's first gamified carbon intelligence platform. Track emissions
-            with AI. Battle your friends. Grow a living ecosystem that mirrors how
-            you treat the planet.
+            The world's first gamified carbon intelligence platform. Track emissions with AI. Battle
+            your friends. Grow a living ecosystem that mirrors how you treat the planet.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <Link to="/auth" className="group relative inline-flex items-center gap-2 rounded-full gradient-canopy px-6 py-3 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]">
+            <Link
+              to="/auth"
+              className="group relative inline-flex items-center gap-2 rounded-full gradient-canopy px-6 py-3 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]"
+            >
               Start For Free
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <a href="#features" className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-base font-semibold transition-colors hover:border-primary/40">
+            <a
+              href="#features"
+              className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-base font-semibold transition-colors hover:border-primary/40"
+            >
               <PlayCircle className="h-5 w-5 text-primary" />
               Watch 90-sec demo
             </a>
@@ -172,12 +191,23 @@ function FloatingStatCard() {
         <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
           Your Score
         </div>
-        <div className="mt-1 font-mono text-3xl font-bold text-primary">1.42<span className="text-base text-muted-foreground">t CO₂</span></div>
+        <div className="mt-1 font-mono text-3xl font-bold text-primary">
+          1.42<span className="text-base text-muted-foreground">t CO₂</span>
+        </div>
         <div className="mt-0.5 text-xs text-canopy-glow">↓ 18% vs city avg</div>
       </div>
       <div className="relative h-14 w-14">
         <svg viewBox="0 0 36 36" className="h-full w-full -rotate-90">
-          <circle cx="18" cy="18" r="15.9" fill="none" stroke="currentColor" strokeOpacity="0.15" strokeWidth="3" className="text-foreground" />
+          <circle
+            cx="18"
+            cy="18"
+            r="15.9"
+            fill="none"
+            stroke="currentColor"
+            strokeOpacity="0.15"
+            strokeWidth="3"
+            className="text-foreground"
+          />
           <circle
             cx="18"
             cy="18"
@@ -195,7 +225,9 @@ function FloatingStatCard() {
             </linearGradient>
           </defs>
         </svg>
-        <div className="absolute inset-0 grid place-items-center font-mono text-xs font-bold">72%</div>
+        <div className="absolute inset-0 grid place-items-center font-mono text-xs font-bold">
+          72%
+        </div>
       </div>
     </div>
   );
@@ -232,8 +264,12 @@ function LiveCounterStrip() {
 function Ticker({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{label}</span>
-      <span className={`font-mono text-sm font-semibold ${accent ? "text-primary" : "text-foreground"}`}>
+      <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+        {label}
+      </span>
+      <span
+        className={`font-mono text-sm font-semibold ${accent ? "text-primary" : "text-foreground"}`}
+      >
         {value}
       </span>
     </div>
@@ -313,12 +349,24 @@ function FeatureGrid() {
   );
 }
 
-function SectionHeader({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle: string }) {
+function SectionHeader({
+  eyebrow,
+  title,
+  subtitle,
+}: {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+}) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <div className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-primary">{eyebrow}</div>
+      <div className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-primary">
+        {eyebrow}
+      </div>
       <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">{title}</h2>
-      <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground md:text-lg">{subtitle}</p>
+      <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground md:text-lg">
+        {subtitle}
+      </p>
     </div>
   );
 }
@@ -326,10 +374,18 @@ function SectionHeader({ eyebrow, title, subtitle }: { eyebrow: string; title: s
 /* ───────── Category Strip ───────── */
 function CategoryStrip() {
   const cats = [
-    { e: "🚗", l: "Transport" }, { e: "⚡", l: "Electricity" }, { e: "🍔", l: "Food" },
-    { e: "🛍", l: "Shopping" }, { e: "🗑", l: "Waste" }, { e: "🚿", l: "Water" },
-    { e: "✈️", l: "Flights" }, { e: "💻", l: "Digital" }, { e: "👗", l: "Fashion" },
-    { e: "📦", l: "Deliveries" }, { e: "🏠", l: "Home" }, { e: "🐄", l: "Diet" },
+    { e: "🚗", l: "Transport" },
+    { e: "⚡", l: "Electricity" },
+    { e: "🍔", l: "Food" },
+    { e: "🛍", l: "Shopping" },
+    { e: "🗑", l: "Waste" },
+    { e: "🚿", l: "Water" },
+    { e: "✈️", l: "Flights" },
+    { e: "💻", l: "Digital" },
+    { e: "👗", l: "Fashion" },
+    { e: "📦", l: "Deliveries" },
+    { e: "🏠", l: "Home" },
+    { e: "🐄", l: "Diet" },
   ];
   return (
     <section id="impact" className="relative z-10 border-y border-border/40 bg-card/30">
@@ -362,20 +418,36 @@ function GamificationShowcase() {
     <section id="gamify" className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:py-32">
       <div className="grid items-center gap-12 lg:grid-cols-2">
         <div>
-          <div className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-primary">The loop</div>
+          <div className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-primary">
+            The loop
+          </div>
           <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-            Duolingo × Clash of Clans × Fitbit — <span className="text-gradient-canopy">for the planet.</span>
+            Duolingo × Clash of Clans × Fitbit —{" "}
+            <span className="text-gradient-canopy">for the planet.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Streaks. Levels. Guild wars. A living island that thrives when you make good
-            choices and wilts when you don't. Real social accountability — the only kind that makes habits stick.
+            Streaks. Levels. Guild wars. A living island that thrives when you make good choices and
+            wilts when you don't. Real social accountability — the only kind that makes habits
+            stick.
           </p>
 
           <ul className="mt-8 space-y-3">
             {[
-              { icon: Flame, t: "30-day streak system", d: "Green → Blue → Purple flames. Shields protect lapses." },
-              { icon: Swords, t: "Live carbon battles", d: "1v1, teams, colleges, and city-vs-city leagues." },
-              { icon: TreePine, t: "Your living island", d: "5 evolution stages from barren shore to legendary Eden." },
+              {
+                icon: Flame,
+                t: "30-day streak system",
+                d: "Green → Blue → Purple flames. Shields protect lapses.",
+              },
+              {
+                icon: Swords,
+                t: "Live carbon battles",
+                d: "1v1, teams, colleges, and city-vs-city leagues.",
+              },
+              {
+                icon: TreePine,
+                t: "Your living island",
+                d: "5 evolution stages from barren shore to legendary Eden.",
+              },
             ].map((item) => (
               <li key={item.t} className="flex gap-4 rounded-xl glass p-4">
                 <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-primary/10 ring-1 ring-primary/30">
@@ -441,9 +513,13 @@ function GamificationShowcase() {
                     >
                       {c.done && "✓"}
                     </div>
-                    <span className={c.done ? "line-through text-muted-foreground" : ""}>{c.t}</span>
+                    <span className={c.done ? "line-through text-muted-foreground" : ""}>
+                      {c.t}
+                    </span>
                   </div>
-                  <span className="font-mono text-xs font-semibold text-canopy-gold">+{c.xp} XP</span>
+                  <span className="font-mono text-xs font-semibold text-canopy-gold">
+                    +{c.xp} XP
+                  </span>
                 </div>
               ))}
             </div>
@@ -451,7 +527,9 @@ function GamificationShowcase() {
             {/* Live battle */}
             <div className="mt-6 rounded-xl border border-secondary/30 bg-secondary/5 p-4">
               <div className="mb-2 flex items-center justify-between text-xs">
-                <span className="font-mono uppercase tracking-wider text-secondary">Live Battle · 3d left</span>
+                <span className="font-mono uppercase tracking-wider text-secondary">
+                  Live Battle · 3d left
+                </span>
                 <span className="font-mono text-muted-foreground">You vs Ravi</span>
               </div>
               <div className="flex items-center gap-3">
@@ -483,15 +561,21 @@ function CTASection() {
           Your move, <span className="text-gradient-canopy">Earth Architect.</span>
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
-          Free forever for individuals. Pro at ₹99/mo. Team plans for colleges & companies.
-          Join 4,800+ players already battling for the planet.
+          Free forever for individuals. Pro at ₹99/mo. Team plans for colleges & companies. Join
+          4,800+ players already battling for the planet.
         </p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-          <Link to="/auth" className="group inline-flex items-center gap-2 rounded-full gradient-canopy px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]">
+          <Link
+            to="/auth"
+            className="group inline-flex items-center gap-2 rounded-full gradient-canopy px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]"
+          >
             Claim your island
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
-          <a href="#features" className="rounded-full glass px-7 py-3.5 text-base font-semibold transition-colors hover:border-primary/40">
+          <a
+            href="#features"
+            className="rounded-full glass px-7 py-3.5 text-base font-semibold transition-colors hover:border-primary/40"
+          >
             See Pro features
           </a>
         </div>
@@ -536,7 +620,7 @@ function AmbientParticles() {
               width: size,
               height: size,
               animationDelay: `${delay}s`,
-              opacity: 0.35 + ((i % 5) * 0.1),
+              opacity: 0.35 + (i % 5) * 0.1,
             }}
           />
         );
