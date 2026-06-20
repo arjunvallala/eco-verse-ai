@@ -11,7 +11,9 @@ describe("cn class merging helper", () => {
   });
 
   it("should handle conditional classes correctly", () => {
-    expect(cn("px-4 py-2", true && "bg-blue-500", false && "text-black")).toBe(
+    const isActive = true;
+    const isDisabled = false;
+    expect(cn("px-4 py-2", isActive && "bg-blue-500", isDisabled && "text-black")).toBe(
       "px-4 py-2 bg-blue-500",
     );
   });

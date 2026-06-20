@@ -29,12 +29,11 @@ export function getAiModel() {
   );
 }
 
-export const checkAiConfig = createServerFn({ method: "GET" })
-  .handler(async () => {
-    const lovableKey = process.env.LOVABLE_API_KEY;
-    const geminiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-    return {
-      hasKey: !!(lovableKey || geminiKey),
-      keyType: lovableKey ? "lovable" : geminiKey ? "gemini" : null,
-    };
-  });
+export const checkAiConfig = createServerFn({ method: "GET" }).handler(async () => {
+  const lovableKey = process.env.LOVABLE_API_KEY;
+  const geminiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+  return {
+    hasKey: !!(lovableKey || geminiKey),
+    keyType: lovableKey ? "lovable" : geminiKey ? "gemini" : null,
+  };
+});

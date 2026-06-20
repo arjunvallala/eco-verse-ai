@@ -326,8 +326,8 @@ function LogPage() {
               <div className="mt-3 rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3 flex gap-3 text-xs leading-relaxed text-emerald-200/90">
                 <Leaf className="h-4 w-4 shrink-0 text-emerald-400 mt-0.5 animate-pulse" />
                 <div>
-                  <span className="font-semibold">Live Mode Enabled:</span> Carbon footprint analyses
-                  are powered live by{" "}
+                  <span className="font-semibold">Live Mode Enabled:</span> Carbon footprint
+                  analyses are powered live by{" "}
                   {configQuery.data.keyType === "lovable" ? "Lovable AI Gateway" : "Google Gemini"}.
                 </div>
               </div>
