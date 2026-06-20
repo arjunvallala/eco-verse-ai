@@ -64,7 +64,7 @@ export const saveOnboarding = createServerFn({ method: "POST" })
     return { baseline_co2_kg };
   });
 
-function commuteFactor(mode?: string | null) {
+export function commuteFactor(mode?: string | null) {
   switch (mode) {
     case "walk_bike":
       return 0;
@@ -82,7 +82,7 @@ function commuteFactor(mode?: string | null) {
       return 0.12;
   }
 }
-function dietBaseline(d?: string | null) {
+export function dietBaseline(d?: string | null) {
   switch (d) {
     case "vegan":
       return 1100;
@@ -96,7 +96,7 @@ function dietBaseline(d?: string | null) {
       return 2500;
   }
 }
-function heatingBaseline(h?: string | null) {
+export function heatingBaseline(h?: string | null) {
   switch (h) {
     case "heat_pump":
       return 600;
@@ -113,7 +113,7 @@ function heatingBaseline(h?: string | null) {
       return 1800;
   }
 }
-function fastFashionBaseline(f?: string | null) {
+export function fastFashionBaseline(f?: string | null) {
   switch (f) {
     case "never":
       return 100;
