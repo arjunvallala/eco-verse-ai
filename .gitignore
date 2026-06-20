@@ -37,3 +37,8 @@ dist-ssr
 .env.*.local
 .env.production
 
+# Netlify & Nitro build outputs
+.netlify/
+.output/
+
+
